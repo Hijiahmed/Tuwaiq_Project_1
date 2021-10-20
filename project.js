@@ -1,9 +1,7 @@
-let body = $("body");
+// let body = $("body");
 let mainContainer = $(".mainContainer");
-let h1 = $(".h1");
-let meneu = $(".meneu");
-let UserName = $(".UserName");
-let pass = $(".pass");
+// let h1 = $(".h1");
+// let meneu = $(".meneu");
 
 let arrClub = JSON.parse(localStorage.getItem("team")) || [
   {
@@ -84,4 +82,7 @@ function remove(i) {
   arrClub.splice(i, 1);
   mainContainer.html("");
   renderArr(arrClub);
+}
+function alert1() {
+  alert("Buying succeeded");
 }
