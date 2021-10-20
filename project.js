@@ -1,12 +1,11 @@
 let body = $("body");
 let mainContainer = $(".mainContainer");
-let divShow = $("#showBtn");
-let divHide = $("#hideBtn");
 let h1 = $(".h1");
 let meneu = $(".meneu");
 let UserName = $(".UserName");
 let pass = $(".pass");
-let arrClub = [
+
+let arrClub = JSON.parse(localStorage.getItem("team")) || [
   {
     clubs: "itihad",
     price: "20.00",
@@ -44,22 +43,27 @@ let arrClub = [
     buy: "buy",
   },
 ];
+
 let clubs = $("#clubs");
 let img = $("#img");
 let price = $("#price");
 let buy = $("buy");
 function renderArr(array) {
+  console.log(array);
   for (let i = 0; i < array.length; i++) {
     const div = $(`<div class="clubs">
+    <img src ="${array[i].img}">
+    <div class="content">
         <h1>${array[i].clubs}</h1>
-        <img src ="${array[i].img}">
         <h1>${array[i].price}</h1>
         <a href="./buy.html"> <button class="buy">Buy</button></a>
-        <button onclick='remove(${i})'>remove</button>
+        <button onclick=remove(${i}) class="buy">remove</button>
+        </div>
     </div>`);
 
     mainContainer.append(div);
   }
+  localStorage.setItem("team", JSON.stringify(arrClub));
 }
 
 renderArr(arrClub);
@@ -72,25 +76,12 @@ function addTeamt() {
     buy: buy.val(),
   };
   arrClub.push(newTeam);
-  renderArr([newTeam]);
+  mainContainer.html("");
+  renderArr(arrClub);
 }
 function remove(i) {
   console.log(i);
   arrClub.splice(i, 1);
   mainContainer.html("");
   renderArr(arrClub);
-}
-// function remove(i) {
-//   arrClub.splice(i);
-//   console.log(arrClub);
-// }
-
-remove(arrClub);
-
-function hideHandler() {
-  devhideShow.hide();
-}
-
-function showHandler() {
-  devhideShow.show();
 }
