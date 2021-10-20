@@ -1,6 +1,9 @@
+body {
+  background-color: rgb(209, 204, 184);
+}
 .h1 {
   text-align: center;
-  background-color: rgb(255, 255, 255);
+
   color: black;
   margin: auto;
 }
